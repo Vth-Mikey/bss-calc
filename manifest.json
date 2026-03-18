@@ -1,0 +1,16 @@
+{
+  "name": "BSS Drive Calculator",
+  "short_name": "BSS Calc",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0d0d0d",
+  "theme_color": "#f1c40f",
+  "icons": [
+    {
+      "src": "img/Hivesticker_party_robo_bear.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}
+
