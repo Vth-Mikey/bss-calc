@@ -43,13 +43,12 @@
             padding: 1.5rem; 
             border-radius: 12px; 
             box-shadow: 0 10px 40px rgba(0,0,0,0.2); 
-            width: 100%; 
+            width: 95%; /* Responsive width */
             max-width: 480px; 
             border: 1px solid var(--border-color); 
             position: relative;
         }
 
-        /* UPDATED: 2x Smaller Toggle */
         .theme-toggle {
             position: absolute;
             top: 12px;
@@ -67,7 +66,6 @@
             transition: transform 0.2s ease;
         }
 
-        /* Icon Styling */
         .title-icon {
             width: 28px;
             height: 28px;
@@ -82,7 +80,7 @@
             margin-bottom: 1.5rem; 
             text-transform: uppercase; 
             font-size: 1.2rem; 
-            margin-top: 30px; /* Added space from the top */
+            margin-top: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -148,6 +146,20 @@
         .btn-reset { width: 100%; margin-top: 15px; background: var(--input-bg); color: #888; border: 1px solid var(--border-color); padding: 8px; border-radius: 6px; font-size: 0.75rem; cursor: pointer; }
         .footer { text-align: center; margin-top: 20px; font-size: 0.8rem; color: #666; }
         .footer a { color: #f1c40f; text-decoration: none; font-weight: bold; }
+
+        /* RESPONSIVE MEDIA QUERY */
+        @media (max-width: 420px) {
+            .row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .container {
+                padding: 1rem;
+            }
+            h2 {
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -209,6 +221,7 @@
 </div>
 
 <script>
+    // [All your JavaScript logic remains exactly as it was]
     function toggleTheme() {
         const body = document.body;
         const btn = document.getElementById('themeBtn');
