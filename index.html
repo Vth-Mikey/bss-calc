@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BSS Drive Calc v1.1</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
     <meta name="title" content="BSS Drive Cost Calculator 🍯">
     <meta name="description" content="Calculate the total honey cost for 1-500 White, Red, Blue, or Glitch drives. Optimized for mobile.">
 
@@ -19,6 +23,7 @@
     <meta property="twitter:title" content="BSS Drive Cost Calculator 🍯">
     <meta property="twitter:description" content="Calculate the path to 500 drives with accuracy.">
     <meta property="twitter:image" content="https://vth-mikey.github.io/DigitalBeeDrivesCalcu/img/social-preview.png">
+
     <style>
         /* THEME VARIABLES */
         :root {
@@ -40,7 +45,8 @@
         }
 
         body { 
-            font-family: 'Segoe UI', sans-serif; 
+            /* UPDATED: BSS Font Family */
+            font-family: 'Source Sans 3', sans-serif; 
             background-color: var(--bg-color); 
             color: var(--text-color); 
             display: flex; 
@@ -64,7 +70,6 @@
             position: relative;
         }
 
-        /* UPDATED: 2x Smaller Toggle */
         .theme-toggle {
             position: absolute;
             top: 12px;
@@ -82,7 +87,6 @@
             transition: transform 0.2s ease;
         }
 
-        /* Icon Styling */
         .title-icon {
             width: 28px;
             height: 28px;
@@ -101,6 +105,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: 700; /* Extra bold for titles */
         }
         
         .heads-up { 
@@ -108,19 +113,19 @@
             border: 1px solid #3498db; 
             padding: 10px; 
             border-radius: 8px; 
-            font-size: 0.8rem; 
+            font-size: 0.85rem; 
             color: #3498db; 
             margin-bottom: 1.5rem; 
         }
 
         .section-title { 
-            font-size: 0.75rem; 
+            font-size: 0.8rem; 
             color: var(--section-title); 
             margin-bottom: 8px; 
             border-bottom: 1px solid var(--border-color); 
             padding-bottom: 4px; 
             text-transform: uppercase; 
-            font-weight: bold; 
+            font-weight: 700; 
             margin-top: 20px; 
         }
 
@@ -128,6 +133,7 @@
             width: 100%; padding: 10px; border: 1px solid var(--border-color); 
             border-radius: 8px; background: var(--input-bg); 
             color: var(--text-color); font-size: 1rem; box-sizing: border-box; 
+            font-family: 'Source Sans 3', sans-serif;
         }
 
         .result-box, .single-box { 
@@ -143,7 +149,7 @@
         .result-box { border-left: 4px solid #2ecc71; }
         .single-box { border-left: 4px solid #3498db; }
 
-        .honey-value { font-size: 1.4rem; font-weight: bold; color: #2ecc71; margin: 8px 0; }
+        .honey-value { font-size: 1.4rem; font-weight: 800; color: #2ecc71; margin: 8px 0; }
         
         .currency-label {
             color: #f39c12;
@@ -153,16 +159,16 @@
             background: rgba(243, 156, 18, 0.1);
             padding: 4px 12px;
             border-radius: 20px;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .notation { color: #f1c40f; font-size: 0.95rem; font-weight: 600; min-height: 1.2rem; }
 
         .row { display: flex; gap: 10px; margin-bottom: 20px; }
 
-        .btn-reset { width: 100%; margin-top: 15px; background: var(--input-bg); color: #888; border: 1px solid var(--border-color); padding: 8px; border-radius: 6px; font-size: 0.75rem; cursor: pointer; }
-        .footer { text-align: center; margin-top: 20px; font-size: 0.8rem; color: #666; }
-        .footer a { color: #f1c40f; text-decoration: none; font-weight: bold; }
+        .btn-reset { width: 100%; margin-top: 15px; background: var(--input-bg); color: #888; border: 1px solid var(--border-color); padding: 8px; border-radius: 6px; font-size: 0.75rem; cursor: pointer; font-family: 'Source Sans 3', sans-serif; }
+        .footer { text-align: center; margin-top: 20px; font-size: 0.85rem; color: #666; }
+        .footer a { color: #f1c40f; text-decoration: none; font-weight: 700; }
     </style>
 </head>
 <body>
@@ -180,7 +186,7 @@
     </div>
 
     <div class="input-group">
-        <label style="font-size: 0.8rem; opacity: 0.7;">Drive Type</label>
+        <label style="font-size: 0.85rem; opacity: 0.7;">Drive Type</label>
         <select id="driveType" onchange="calculate()">
             <option value="250000">Colored (White / Red / Blue)</option>
             <option value="1000000">Glitch Drive</option>
@@ -190,11 +196,11 @@
     <div class="section-title">Total Honey Needed</div>
     <div class="row">
         <div style="flex: 1;">
-            <label style="font-size: 0.7rem; opacity: 0.7;">Current Drives</label>
+            <label style="font-size: 0.75rem; opacity: 0.7;">Current Drives</label>
             <input type="number" id="current" placeholder="Amount" oninput="calculate()">
         </div>
         <div style="flex: 1;">
-            <label style="font-size: 0.7rem; opacity: 0.7;">Target Drives</label>
+            <label style="font-size: 0.75rem; opacity: 0.7;">Target Drives</label>
             <input type="number" id="target" placeholder="Amount" oninput="calculate()">
         </div>
     </div>
@@ -207,7 +213,7 @@
 
     <div class="section-title">Specific Drive Lookup</div>
     <div style="margin-bottom: 15px;">
-        <label style="font-size: 0.7rem; opacity: 0.7;">Check specific drive number cost (e.g. 273rd colored drive costs 20.4B Honey)</label>
+        <label style="font-size: 0.75rem; opacity: 0.7;">Check specific drive number cost (e.g. 273rd colored drive costs 20.4B Honey)</label>
         <input type="number" id="specificN" placeholder="Drive number" oninput="calculate()">
     </div>
     <div class="single-box">
@@ -224,7 +230,6 @@
 </div>
 
 <script>
-    // [All your JavaScript logic remains the same]
     function toggleTheme() {
         const body = document.body;
         const btn = document.getElementById('themeBtn');
