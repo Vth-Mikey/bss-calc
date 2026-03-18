@@ -1,4 +1,4 @@
-# bss-calc
+# digi-bee-drives-calc
 bee swarm simulator calculator 
 
 # 🐝 BSS Drive Cost Calculator `v1.0`
