@@ -11,7 +11,7 @@ A high-precision honey estimation tool for **Bee Swarm Simulator** players. Desi
 
 ## 🌐 Live Application
 You can access the calculator here: 
-### 👉 [bit.ly/bsscalculator](https://bit.ly/bsscalculator)
+### 👉 [bit.ly/bsscalculator](https://bit.ly/bsscalc)
 
 ---
 
