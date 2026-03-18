@@ -3,30 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BSS Drive Calc v1.2.1</title>
+    <title>BSS Digital Bee Drive Honey Cost Calculator</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 
-    <meta name="title" content="BSS Drive Cost Calculator 🍯">
-    <meta name="description" content="Calculate the total honey cost for 1-500 White, Red, Blue, or Glitch drives. Optimized for mobile.">
-    <meta name="keywords" content="Bee Swarm Simulator, BSS, RBC, Robo Bear Challenge, Digital Bee, Drive Calculator, Honey Cost, Roblox, Blue Hive, Red Hive, White Hive">
+    <meta name="title" content="BSS Digital Bee Drive Honey Cost Calculator 🍯">
+    <meta name="description" content="Calculate the exact honey cost for 1-500 White, Red, Blue, or Glitch drives in Bee Swarm Simulator. Optimized for mobile and Blue Hive builds.">
+    <meta name="keywords" content="Bee Swarm Simulator, BSS, RBC, Robo Bear Challenge, Digital Bee, Drive Calculator, Honey Cost, Roblox, Blue Hive, Red Hive, White Hive, Onett">
+    <meta name="author" content="✯𝑵𝖎𝖌𝖍𝒕">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vth-mikey.github.io/DigitalBeeDrivesCalcu/">
     <meta property="og:title" content="BSS Drive Cost Calculator 🍯">
     <meta property="og:description" content="Precision honey estimation tool for Bee Swarm Simulator. Created by ✯𝑵𝖎𝖌𝖍𝒕.">
-    <meta property="og:image" content="https://vth-mikey.github.io/DigitalBeeDrivesCalcu/img/social-preview.png">
-
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://vth-mikey.github.io/DigitalBeeDrivesCalcu/">
-    <meta property="twitter:title" content="BSS Drive Cost Calculator 🍯">
-    <meta property="twitter:description" content="Calculate the path to 500 drives with accuracy.">
-    <meta property="twitter:image" content="https://vth-mikey.github.io/DigitalBeeDrivesCalcu/img/social-preview.png">
+    <meta property="og:image" content="https://vth-mikey.github.io/DigitalBeeDrivesCalcu/img/Hivesticker_party_robo_bear.webp">
 
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#f1c40f">
+    <meta name="mobile-web-app-capable" content="yes">
     <link rel="apple-touch-icon" href="img/Hivesticker_party_robo_bear.webp">
     
     <style>
@@ -191,6 +187,18 @@
         .footer a { color: #f1c40f; text-decoration: none; font-weight: 700; }
         
         #app-version { opacity: 0.5; font-size: 0.7rem; margin-top: 5px; display: block; }
+
+        /* WHAT'S NEW STYLES */
+        #news-popup {
+            display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.85); z-index:1000; align-items:center; justify-content:center;
+            backdrop-filter: blur(5px);
+        }
+        .news-content {
+            background: var(--container-bg); padding: 2rem; border-radius: 15px; 
+            border: 2px solid var(--section-title); max-width: 85%; text-align: center;
+            box-shadow: 0 0 30px rgba(241, 196, 15, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -249,12 +257,25 @@
 
     <div class="footer">
         Created by <a href="https://guns.lol/nightnosleep" target="_blank">✯𝑵𝖎𝖌𝖍𝒕</a>
-        <span id="app-version">v1.2.1</span>
+        <span id="app-version">v1.3.0</span>
+    </div>
+
+    <div id="news-popup">
+        <div class="news-content">
+            <h3 style="color:var(--section-title); margin-top:0;">✨ What's New in v<span id="popup-ver"></span></h3>
+            <ul style="text-align:left; font-size:0.9rem; line-height:1.6; color:var(--text-color); padding-left: 20px;">
+                <li>Added BSS "Source Sans 3" font support.</li>
+                <li>New "What's New" patch notes system.</li>
+                <li>Added SEO tags to help find us on Google!</li>
+                <li>Improved mobile home-screen icon support.</li>
+            </ul>
+            <button onclick="closeNews()" style="margin-top:20px; background:var(--section-title); color:#000; border:none; padding:12px 20px; border-radius:8px; font-weight:bold; cursor:pointer; width:100%; font-family: 'Source Sans 3';">Got it!</button>
+        </div>
     </div>
 </div>
 
 <script>
-    const VERSION = "1.2.1";
+    const VERSION = "1.3.0";
 
     function toggleTheme() {
         const body = document.body;
@@ -268,6 +289,13 @@
     window.onload = function() {
         document.getElementById('app-version').innerText = "Version " + VERSION;
 
+        // --- WHAT'S NEW LOGIC ---
+        const lastSeen = localStorage.getItem('last_seen_version');
+        if (lastSeen !== VERSION) {
+            document.getElementById('popup-ver').innerText = VERSION;
+            document.getElementById('news-popup').style.display = 'flex';
+        }
+
         if(localStorage.getItem('bss_theme') === 'light') {
             document.body.classList.add('light-mode');
             document.getElementById('themeBtn').innerText = '🌙';
@@ -278,6 +306,11 @@
         if(localStorage.getItem('bss_type')) document.getElementById('driveType').value = localStorage.getItem('bss_type');
         calculate();
     };
+
+    function closeNews() {
+        localStorage.setItem('last_seen_version', VERSION);
+        document.getElementById('news-popup').style.display = 'none';
+    }
 
     function forceUpdate() {
         if(confirm("Refresh to check for the latest version? Your saved data will stay safe.")) {
@@ -341,4 +374,3 @@
 
 </body>
 </html>
-
